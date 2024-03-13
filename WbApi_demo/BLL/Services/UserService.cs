@@ -23,6 +23,10 @@ namespace BLL.Services
         public async Task<UserModel> Login(Login_User_Request request)
         {
            UserModel resp = await Repo.Login(request);
+            if (resp.IsSuccess)
+            {
+                resp.AuthToken = Token.GenerateToken(resp.Username, resp.Role);
+            }
             return resp;
         }
 

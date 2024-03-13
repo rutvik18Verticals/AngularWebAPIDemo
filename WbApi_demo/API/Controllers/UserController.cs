@@ -18,12 +18,20 @@ namespace API.Controllers
 
         public IUserService Service { get; }
 
-        [HttpPost]
+        [HttpPost("Register")]
         [AllowAnonymous]
         public async Task<UserModel> Register(Register_User_Request request)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             UserModel resp = await Service.Register(request, identity);
+            return resp;
+        }
+        [HttpPost("Login")]
+        [AllowAnonymous]
+        public async Task<UserModel> Login(Login_User_Request request)
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            UserModel resp = await Service.Login(request);
             return resp;
         }
     }

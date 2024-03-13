@@ -1,5 +1,6 @@
 ﻿using BLL.Services;
 using DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,18 +17,19 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("GetEmployeeList")]
+        [Authorize(Roles = "admin")]
         public async Task<EmployeeList_Response_DTO> GetEmployeeList(Sort_Parameters request) {
             EmployeeList_Response_DTO response = await _employeeService.GetEmployeList(request);
             return response;
         }
 
         [HttpGet("{id}")]
-
         public async Task<EmployeeById_DTO> GetEmployeeById(int id)
         {
             return await _employeeService.GetEmployeeById(id);
         }
         [HttpPost("AddEmployee")]
+        [Authorize(Roles = "admin")]
         public async Task<EmployeeById_DTO> AddEmployee(AddEmployee_Request request)
         {
             EmployeeById_DTO resp = await _employeeService.AddEmployee(request);
@@ -35,6 +37,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("UpdateEmployee")]
+        [Authorize(Roles = "admin")]
         public async Task<EmployeeById_DTO> UpdateEmployee(UpdateEmployee_Request request)
         {
             EmployeeById_DTO resp = await _employeeService.UpdateEmployee(request);
@@ -42,6 +45,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("DeleteEmployee/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<DeleteEmployee_DTO> DeleteEmployee(int id)
         {
             DeleteEmployee_DTO resp = await _employeeService.DeleteEmployee(id);
