@@ -4,6 +4,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240315085021_TaskTable")]
+    partial class TaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +87,6 @@ namespace DAL.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AssignedId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -141,8 +141,8 @@ namespace DAL.Data.Migrations
                         new
                         {
                             Id = 1,
-                            PasswordHash = new byte[] { 73, 179, 66, 159, 99, 219, 101, 47, 240, 135, 22, 9, 9, 151, 157, 182, 164, 215, 6, 106, 50, 64, 132, 73, 233, 236, 192, 164, 235, 202, 58, 49, 189, 176, 207, 180, 182, 228, 37, 26, 5, 11, 27, 253, 69, 28, 15, 72, 58, 3, 220, 158, 6, 160, 37, 223, 82, 157, 45, 158, 196, 130, 194, 244 },
-                            PasswordSalt = new byte[] { 212, 179, 224, 60, 244, 242, 119, 218, 250, 199, 73, 161, 172, 18, 136, 107, 124, 119, 5, 159, 95, 5, 253, 226, 150, 68, 201, 218, 133, 86, 198, 121, 195, 61, 10, 5, 125, 158, 202, 39, 72, 226, 145, 41, 240, 232, 90, 252, 254, 53, 237, 181, 70, 91, 109, 129, 82, 29, 146, 53, 101, 147, 169, 101, 163, 5, 37, 109, 207, 230, 52, 24, 16, 45, 31, 104, 170, 38, 167, 98, 68, 30, 202, 31, 106, 13, 40, 200, 108, 153, 170, 101, 123, 200, 132, 29, 128, 199, 140, 58, 218, 22, 63, 223, 92, 93, 42, 134, 99, 72, 247, 160, 138, 126, 133, 177, 111, 199, 131, 255, 161, 245, 183, 243, 118, 133, 34, 255 },
+                            PasswordHash = new byte[] { 103, 52, 239, 19, 162, 21, 36, 171, 13, 96, 152, 221, 170, 109, 219, 52, 138, 13, 129, 205, 241, 14, 89, 23, 214, 99, 193, 181, 73, 50, 170, 125, 48, 203, 41, 54, 114, 21, 2, 141, 50, 244, 243, 104, 255, 190, 199, 160, 25, 246, 103, 254, 170, 14, 242, 94, 137, 113, 109, 151, 235, 247, 36, 92 },
+                            PasswordSalt = new byte[] { 3, 93, 161, 87, 2, 93, 167, 16, 178, 159, 175, 79, 87, 59, 190, 100, 68, 184, 8, 50, 66, 157, 193, 108, 255, 45, 97, 111, 85, 169, 165, 161, 5, 127, 172, 75, 183, 122, 105, 250, 176, 132, 93, 130, 81, 236, 195, 200, 128, 79, 192, 113, 30, 66, 135, 139, 21, 134, 129, 177, 143, 20, 6, 183, 167, 144, 54, 171, 80, 177, 211, 24, 165, 3, 61, 155, 106, 105, 156, 189, 80, 207, 232, 119, 158, 130, 164, 161, 84, 12, 89, 173, 166, 72, 24, 0, 233, 134, 92, 6, 254, 98, 9, 196, 94, 118, 84, 98, 220, 92, 217, 252, 0, 148, 182, 22, 145, 157, 68, 176, 62, 208, 174, 167, 14, 248, 81, 78 },
                             Role = "admin",
                             Username = "admin"
                         });

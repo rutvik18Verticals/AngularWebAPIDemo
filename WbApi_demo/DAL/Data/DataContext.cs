@@ -46,5 +46,6 @@ namespace DAL.Data
         public DbSet<AppEmployee> Employees { get; set; }
         public DbSet<AppDepartment> Departments { get; set; }
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<AppTask> Tasks { get; set; }
     }
 }
